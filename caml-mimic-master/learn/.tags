@@ -1,0 +1,128 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BOWPool	.\models.py	/^class BOWPool(BaseModel):$/;"	c
+BaseModel	.\models.py	/^class BaseModel(nn.Module):$/;"	c
+CUDA_VISIBLE_DEVICES	.\training.py	/^CUDA_VISIBLE_DEVICES="0"$/;"	v
+ConvAttnPool	.\models.py	/^class ConvAttnPool(BaseModel):$/;"	c
+F	.\models.py	/^import torch.nn.functional as F$/;"	i
+F	.\training.py	/^import torch.nn.functional as F$/;"	i
+KeyedVectors	.\models.py	/^from gensim.models import KeyedVectors$/;"	i
+VanillaConv	.\models.py	/^class VanillaConv(BaseModel):$/;"	c
+VanillaRNN	.\models.py	/^class VanillaRNN(BaseModel):$/;"	c
+Variable	.\models.py	/^from torch.autograd import Variable$/;"	i
+Variable	.\tools.py	/^from torch.autograd import Variable$/;"	i
+Variable	.\training.py	/^from torch.autograd import Variable$/;"	i
+__init__	.\models.py	/^    def __init__(self, Y, embed_file, dicts, lmbda=0, dropout=0.5, gpu=True, embed_size=100):$/;"	m	class:BaseModel
+__init__	.\models.py	/^    def __init__(self, Y, embed_file, dicts, rnn_dim, cell_type, num_layers, gpu, embed_size=100, bidirectional=False):$/;"	m	class:VanillaRNN
+__init__	.\models.py	/^    def __init__(self, Y, embed_file, kernel_size, num_filter_maps, gpu=True, dicts=None, embed_size=100, dropout=0.5):$/;"	m	class:VanillaConv
+__init__	.\models.py	/^    def __init__(self, Y, embed_file, kernel_size, num_filter_maps, lmbda, gpu, dicts, embed_size=100, dropout=0.5, code_emb=None):$/;"	m	class:ConvAttnPool
+__init__	.\models.py	/^    def __init__(self, Y, embed_file, lmbda, gpu, dicts, pool='max', embed_size=100, dropout=0.5, code_emb=None):$/;"	m	class:BOWPool
+_code_emb_init	.\models.py	/^    def _code_emb_init(self, code_emb, dicts):$/;"	m	class:BOWPool
+_code_emb_init	.\models.py	/^    def _code_emb_init(self, code_emb, dicts):$/;"	m	class:ConvAttnPool
+_compare_label_embeddings	.\models.py	/^    def _compare_label_embeddings(self, target, b_batch, desc_data):$/;"	m	class:BaseModel
+_get_loss	.\models.py	/^    def _get_loss(self, yhat, target, diffs=None):$/;"	m	class:BaseModel
+argparse	.\training.py	/^import argparse$/;"	i
+args	.\training.py	/^    args = parser.parse_args()$/;"	v
+build_code_vecs	.\tools.py	/^def build_code_vecs(code_inds, dicts):$/;"	f
+command	.\training.py	/^    command = ' '.join(['python'] + sys.argv)$/;"	v
+construct_attention	.\models.py	/^    def construct_attention(self, argmax, num_windows):$/;"	m	class:VanillaConv
+csv	.\tools.py	/^import csv$/;"	i
+csv	.\training.py	/^import csv$/;"	i
+datasets	.\tools.py	/^import datasets$/;"	i
+datasets	.\training.py	/^import datasets$/;"	i
+default	.\training.py	/^                        default='gru')$/;"	v
+defaultdict	.\training.py	/^from collections import defaultdict$/;"	i
+early_stop	.\training.py	/^def early_stop(metrics_hist, criterion, patience):$/;"	f
+embed_descriptions	.\models.py	/^    def embed_descriptions(self, desc_data, gpu):$/;"	m	class:BaseModel
+evaluation	.\training.py	/^import evaluation$/;"	i
+extract_wvs	.\models.py	/^from dataproc import extract_wvs$/;"	i
+floor	.\models.py	/^from math import floor$/;"	i
+forward	.\models.py	/^    def forward(self, x, target, desc_data=None, get_attention=False):$/;"	m	class:BOWPool
+forward	.\models.py	/^    def forward(self, x, target, desc_data=None, get_attention=False):$/;"	m	class:VanillaConv
+forward	.\models.py	/^    def forward(self, x, target, desc_data=None, get_attention=False):$/;"	m	class:VanillaRNN
+forward	.\models.py	/^    def forward(self, x, target, desc_data=None, get_attention=True):$/;"	m	class:ConvAttnPool
+help	.\training.py	/^                        help="coefficient for penalizing l2 norm of model weights (default: 0)")$/;"	v
+help	.\training.py	/^                        help="how many epochs to wait for improved criterion metric before early stopping (default: 3)")$/;"	v
+help	.\training.py	/^                        help="hyperparameter to tradeoff BCE loss and similarity embedding loss. defaults to 0, which won't create\/use the description embedding module at all. ")$/;"	v
+help	.\training.py	/^                        help="learning rate for Adam optimizer (default=1e-3)")$/;"	v
+help	.\training.py	/^                        help="number of layers for RNN models (default: 1)")$/;"	v
+help	.\training.py	/^                        help="optional flag for multi_conv_attn to instead use concatenated filter outputs, rather than pooling over them")$/;"	v
+help	.\training.py	/^                        help="optional flag for rnn to use a bidirectional model")$/;"	v
+help	.\training.py	/^                        help="optional flag for testing pre-trained models from the public github")$/;"	v
+help	.\training.py	/^                        help="optional flag not to print so much during training")$/;"	v
+help	.\training.py	/^                        help="optional flag to save samples of good \/ bad predictions")$/;"	v
+help	.\training.py	/^                        help="optional flag to use GPU if available")$/;"	v
+help	.\training.py	/^                        help="optional specification of dropout (default: 0.5)")$/;"	v
+help	.\training.py	/^                        help="path to a file containing sorted train data. dev\/test splits assumed to have same name format with 'train' replaced by 'dev' and 'test'")$/;"	v
+help	.\training.py	/^                        help="path to a file holding pre-trained embeddings")$/;"	v
+help	.\training.py	/^                        help="point to code embeddings to use for parameter initialization, if applicable")$/;"	v
+help	.\training.py	/^                        help="size of conv output (default: 50)")$/;"	v
+help	.\training.py	/^                        help="size of convolution filter to use. (default: 3) For multi_conv_attn, give comma separated integers, e.g. 3,4,5")$/;"	v
+help	.\training.py	/^                        help="size of embedding dimension. (default: 100)")$/;"	v
+help	.\training.py	/^                        help="size of rnn hidden layer (default: 128)")$/;"	v
+help	.\training.py	/^                        help="size of training batches")$/;"	v
+help	.\training.py	/^                        help="version of MIMIC in use (default: mimic3)")$/;"	v
+help	.\training.py	/^                        help="which metric to use for early stopping (default: f1_micro)")$/;"	v
+important_spans	.\interpret.py	/^def important_spans(data, output, tgt_codes, pred_codes, s, dicts, filter_size, true_str, pred_str, spans_file, fps=False):$/;"	f
+init	.\training.py	/^def init(args):$/;"	f
+init_hidden	.\models.py	/^    def init_hidden(self):$/;"	m	class:VanillaRNN
+interpret	.\training.py	/^import interpret$/;"	i
+json	.\tools.py	/^import json$/;"	i
+learn	.\interpret.py	/^import learn.models as models$/;"	i
+learn	.\training.py	/^import learn.models as models$/;"	i
+learn	.\training.py	/^import learn.tools as tools$/;"	i
+main	.\training.py	/^def main(args):$/;"	f
+make_param_dict	.\tools.py	/^def make_param_dict(args):$/;"	f
+make_windows	.\interpret.py	/^def make_windows(starts, filter_size, attn):$/;"	f
+math	.\tools.py	/^import math$/;"	i
+models	.\interpret.py	/^import learn.models as models$/;"	i
+models	.\tools.py	/^from learn import models$/;"	i
+models	.\training.py	/^import learn.models as models$/;"	i
+nn	.\models.py	/^import torch.nn as nn$/;"	i
+nn	.\models.py	/^import torch.nn.functional as F$/;"	i
+nn	.\training.py	/^import torch.nn.functional as F$/;"	i
+np	.\interpret.py	/^import numpy as np$/;"	i
+np	.\models.py	/^import numpy as np$/;"	i
+np	.\tools.py	/^import numpy as np$/;"	i
+np	.\training.py	/^import numpy as np$/;"	i
+one_epoch	.\training.py	/^def one_epoch(model, optimizer, Y, epoch, n_epochs, batch_size, data_path, version, testing, dicts, model_dir, $/;"	f
+operator	.\interpret.py	/^import operator$/;"	i
+operator	.\training.py	/^import operator$/;"	i
+optim	.\training.py	/^import torch.optim as optim$/;"	i
+os	.\tools.py	/^import os$/;"	i
+os	.\training.py	/^import os $/;"	i
+parser	.\training.py	/^    parser = argparse.ArgumentParser(description="train a neural network on some clinical documents")$/;"	v
+pdb	.\models.py	/^            import pdb; pdb.set_trace()$/;"	i
+persistence	.\tools.py	/^import persistence$/;"	i
+persistence	.\training.py	/^import persistence$/;"	i
+pick_model	.\tools.py	/^def pick_model(args, dicts):$/;"	f
+pickle	.\tools.py	/^import pickle$/;"	i
+random	.\interpret.py	/^import random$/;"	i
+random	.\models.py	/^import random$/;"	i
+random	.\training.py	/^import random$/;"	i
+refresh	.\models.py	/^    def refresh(self, batch_size):$/;"	m	class:VanillaRNN
+save_samples	.\interpret.py	/^def save_samples(data, output, target_data, s, filter_size, tp_file, fp_file, dicts=None):$/;"	f
+set_trace	.\models.py	/^            import pdb; pdb.set_trace()$/;"	i
+sys	.\interpret.py	/^import sys$/;"	i
+sys	.\models.py	/^import sys$/;"	i
+sys	.\training.py	/^import sys$/;"	i
+test	.\training.py	/^def test(model, Y, epoch, data_path, fold, gpu, version, code_inds, dicts, samples, model_dir, testing):$/;"	f
+time	.\models.py	/^import time$/;"	i
+time	.\training.py	/^import time$/;"	i
+tools	.\training.py	/^import learn.tools as tools$/;"	i
+torch	.\models.py	/^import torch$/;"	i
+torch	.\models.py	/^import torch.nn as nn$/;"	i
+torch	.\models.py	/^import torch.nn.functional as F$/;"	i
+torch	.\tools.py	/^import torch$/;"	i
+torch	.\training.py	/^import torch$/;"	i
+torch	.\training.py	/^import torch.nn.functional as F$/;"	i
+torch	.\training.py	/^import torch.optim as optim$/;"	i
+tqdm	.\training.py	/^from tqdm import tqdm$/;"	i
+train	.\training.py	/^def train(model, optimizer, Y, epoch, batch_size, data_path, gpu, version, dicts, quiet):$/;"	f
+train_epochs	.\training.py	/^def train_epochs(args, model, optimizer, params, dicts):$/;"	f
+unseen_code_vecs	.\training.py	/^def unseen_code_vecs(model, code_inds, dicts, gpu):$/;"	f
+xavier_uniform	.\models.py	/^from torch.nn.init import xavier_uniform$/;"	i

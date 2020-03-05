@@ -1,0 +1,327 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ATTN_FILENAME	.\dataproc\prepare_qualitative_evaluation.py	/^ATTN_FILENAME = "foo"$/;"	v
+BOWPool	.\learn\models.py	/^class BOWPool(BaseModel):$/;"	c
+BaseModel	.\learn\models.py	/^class BaseModel(nn.Module):$/;"	c
+Batch	.\datasets.py	/^class Batch:$/;"	c
+C	.\log_reg.py	/^C = 1.0$/;"	v
+CONTEXT_SIZE	.\dataproc\prepare_qualitative_evaluation.py	/^CONTEXT_SIZE = 10$/;"	v
+CONV_FILENAME	.\dataproc\prepare_qualitative_evaluation.py	/^CONV_FILENAME = "bar"$/;"	v
+CUDA_VISIBLE_DEVICES	.\learn\training.py	/^CUDA_VISIBLE_DEVICES="0"$/;"	v
+ConvAttnPool	.\learn\models.py	/^class ConvAttnPool(BaseModel):$/;"	c
+Counter	.\dataproc\prepare_qualitative_evaluation.py	/^from collections import Counter$/;"	i
+Counter	.\log_reg.py	/^from collections import Counter, defaultdict$/;"	i
+DATA_DIR	.\constants.py	/^DATA_DIR = 'C:\/Users\/Veid\/Desktop\/caml\/caml-mimic-master\/mimicdata'$/;"	v
+DATA_DIR	.\dataproc\build_vocab.py	/^from constants import DATA_DIR, MIMIC_3_DIR$/;"	i
+DATA_DIR	.\dataproc\concat_and_split.py	/^from constants import DATA_DIR$/;"	i
+DATETIME_FORMAT	.\dataproc\concat_and_split.py	/^DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"$/;"	v
+EMBEDDING_SIZE	.\constants.py	/^EMBEDDING_SIZE = 100$/;"	v
+F	.\learn\models.py	/^import torch.nn.functional as F$/;"	i
+F	.\learn\training.py	/^import torch.nn.functional as F$/;"	i
+FILTER_SIZE	.\dataproc\prepare_qualitative_evaluation.py	/^FILTER_SIZE = 4$/;"	v
+KeyedVectors	.\learn\models.py	/^from gensim.models import KeyedVectors$/;"	i
+LR_FILENAME	.\dataproc\prepare_qualitative_evaluation.py	/^LR_FILENAME = "baz"$/;"	v
+LogisticRegression	.\log_reg.py	/^from sklearn.linear_model import LogisticRegression$/;"	i
+MAX_CODE_OCCURRENCES	.\dataproc\prepare_qualitative_evaluation.py	/^MAX_CODE_OCCURRENCES = 5$/;"	v
+MAX_ITER	.\log_reg.py	/^MAX_ITER = 20$/;"	v
+MAX_LENGTH	.\constants.py	/^MAX_LENGTH = 2500$/;"	v
+MIMIC_2_DIR	.\constants.py	/^MIMIC_2_DIR = 'C:\/Users\/Veid\\Desktop\/caml\/caml-mimic-master\/mimicdata\/mimic2'$/;"	v
+MIMIC_3_DIR	.\constants.py	/^MIMIC_3_DIR = 'C:\/Users\/Veid\\Desktop\/caml\/caml-mimic-master\/mimicdata\/mimic3'$/;"	v
+MIMIC_3_DIR	.\dataproc\build_vocab.py	/^from constants import DATA_DIR, MIMIC_3_DIR$/;"	i
+MIMIC_3_DIR	.\dataproc\concat_and_split.py	/^from constants import MIMIC_3_DIR$/;"	i
+MIMIC_3_DIR	.\dataproc\get_discharge_summaries.py	/^from constants import MIMIC_3_DIR$/;"	i
+MODEL_DIR	.\constants.py	/^MODEL_DIR = 'C:\/Users\/Veid\/Desktop\/caml\/caml-mimic-master\/saved_models'$/;"	v
+NUM_QUESTIONS	.\dataproc\prepare_qualitative_evaluation.py	/^NUM_QUESTIONS = 100$/;"	v
+OneVsRestClassifier	.\log_reg.py	/^from sklearn.multiclass import OneVsRestClassifier$/;"	i
+PAD_CHAR	.\constants.py	/^PAD_CHAR = "**PAD**"$/;"	v
+ProcessedIter	.\dataproc\word_embeddings.py	/^class ProcessedIter(object):$/;"	c
+RegexpTokenizer	.\dataproc\get_discharge_summaries.py	/^from nltk.tokenize import RegexpTokenizer$/;"	i
+RegexpTokenizer	.\dataproc\vocab_index_descriptions.py	/^from nltk.tokenize import RegexpTokenizer$/;"	i
+SIM_FILENAME	.\dataproc\prepare_qualitative_evaluation.py	/^SIM_FILENAME = "hax"$/;"	v
+VanillaConv	.\learn\models.py	/^class VanillaConv(BaseModel):$/;"	c
+VanillaRNN	.\learn\models.py	/^class VanillaRNN(BaseModel):$/;"	c
+Variable	.\learn\models.py	/^from torch.autograd import Variable$/;"	i
+Variable	.\learn\tools.py	/^from torch.autograd import Variable$/;"	i
+Variable	.\learn\training.py	/^from torch.autograd import Variable$/;"	i
+Y	.\get_metrics_for_saved_predictions.py	/^Y = 'full' if parts[1].startswith('full') else 50$/;"	v
+__init__	.\dataproc\word_embeddings.py	/^    def __init__(self, Y, filename):$/;"	m	class:ProcessedIter
+__init__	.\datasets.py	/^    def __init__(self, desc_embed):$/;"	m	class:Batch
+__init__	.\learn\models.py	/^    def __init__(self, Y, embed_file, dicts, lmbda=0, dropout=0.5, gpu=True, embed_size=100):$/;"	m	class:BaseModel
+__init__	.\learn\models.py	/^    def __init__(self, Y, embed_file, dicts, rnn_dim, cell_type, num_layers, gpu, embed_size=100, bidirectional=False):$/;"	m	class:VanillaRNN
+__init__	.\learn\models.py	/^    def __init__(self, Y, embed_file, kernel_size, num_filter_maps, gpu=True, dicts=None, embed_size=100, dropout=0.5):$/;"	m	class:VanillaConv
+__init__	.\learn\models.py	/^    def __init__(self, Y, embed_file, kernel_size, num_filter_maps, lmbda, gpu, dicts, embed_size=100, dropout=0.5, code_emb=None):$/;"	m	class:ConvAttnPool
+__init__	.\learn\models.py	/^    def __init__(self, Y, embed_file, lmbda, gpu, dicts, pool='max', embed_size=100, dropout=0.5, code_emb=None):$/;"	m	class:BOWPool
+__iter__	.\dataproc\word_embeddings.py	/^    def __iter__(self):$/;"	m	class:ProcessedIter	file:
+_code_emb_init	.\learn\models.py	/^    def _code_emb_init(self, code_emb, dicts):$/;"	m	class:BOWPool
+_code_emb_init	.\learn\models.py	/^    def _code_emb_init(self, code_emb, dicts):$/;"	m	class:ConvAttnPool
+_compare_label_embeddings	.\learn\models.py	/^    def _compare_label_embeddings(self, target, b_batch, desc_data):$/;"	m	class:BaseModel
+_get_loss	.\learn\models.py	/^    def _get_loss(self, yhat, target, diffs=None):$/;"	m	class:BaseModel
+a	.\dataproc\concat_and_split.py	/^a=concat_data('%s\/ALL_CODES_filtered.csv' % MIMIC_3_DIR, sorted_file)/;"	v
+add_instance	.\datasets.py	/^    def add_instance(self, row, ind2c, c2ind, w2ind, dv_dict, num_labels):$/;"	m	class:Batch
+all_macro	.\evaluation.py	/^def all_macro(yhat, y):$/;"	f
+all_metrics	.\evaluation.py	/^def all_metrics(yhat, y, k=8, yhat_raw=None, calc_auc=True):$/;"	f
+all_micro	.\evaluation.py	/^def all_micro(yhatmic, ymic):$/;"	f
+argparse	.\learn\training.py	/^import argparse$/;"	i
+args	.\learn\training.py	/^    args = parser.parse_args()$/;"	v
+auc	.\evaluation.py	/^from sklearn.metrics import roc_curve, auc$/;"	i
+auc_metrics	.\evaluation.py	/^def auc_metrics(yhat_raw, y, ymic):$/;"	f
+build_code_vecs	.\learn\tools.py	/^def build_code_vecs(code_inds, dicts):$/;"	f
+build_matrix	.\dataproc\extract_wvs.py	/^def build_matrix(ind2w, wv):$/;"	f
+build_vocab	.\dataproc\build_vocab.py	/^def build_vocab(vocab_min, infile, vocab_filename):$/;"	f
+c2ind	.\get_metrics_for_saved_predictions.py	/^c2ind = {c:i for i,c in ind2c.items()}$/;"	v
+calculate_top_ngrams	.\log_reg.py	/^def calculate_top_ngrams(inputfile, clf, c2ind, w2ind, labels_with_examples, n):$/;"	f
+codes	.\get_metrics_for_saved_predictions.py	/^        codes = set([c2ind[c] for c in row[3].split(';')])$/;"	v
+command	.\learn\training.py	/^    command = ' '.join(['python'] + sys.argv)$/;"	v
+concat_data	.\dataproc\concat_and_split.py	/^def concat_data(labelsfile, notes_file):$/;"	f
+construct_X_Y	.\log_reg.py	/^def construct_X_Y(notefile, Y, w2ind, c2ind, version):$/;"	f
+construct_attention	.\learn\models.py	/^    def construct_attention(self, argmax, num_windows):$/;"	m	class:VanillaConv
+csr_matrix	.\dataproc\build_vocab.py	/^from scipy.sparse import csr_matrix$/;"	i
+csr_matrix	.\log_reg.py	/^from scipy.sparse import csr_matrix$/;"	i
+csv	.\dataproc\build_vocab.py	/^import csv$/;"	i
+csv	.\dataproc\concat_and_split.py	/^import csv$/;"	i
+csv	.\dataproc\extract_wvs.py	/^import csv$/;"	i
+csv	.\dataproc\get_discharge_summaries.py	/^import csv$/;"	i
+csv	.\dataproc\prepare_qualitative_evaluation.py	/^import csv$/;"	i
+csv	.\dataproc\vocab_index_descriptions.py	/^import csv$/;"	i
+csv	.\dataproc\word_embeddings.py	/^import csv$/;"	i
+csv	.\datasets.py	/^import csv$/;"	i
+csv	.\evaluation.py	/^import csv$/;"	i
+csv	.\get_metrics_for_saved_predictions.py	/^import csv$/;"	i
+csv	.\learn\tools.py	/^import csv$/;"	i
+csv	.\learn\training.py	/^import csv$/;"	i
+csv	.\log_reg.py	/^import csv$/;"	i
+csv	.\persistence.py	/^import csv$/;"	i
+data_generator	.\datasets.py	/^def data_generator(filename, dicts, batch_size, num_labels, desc_embed=False, version='mimic3'):$/;"	f
+datasets	.\dataproc\extract_wvs.py	/^import datasets$/;"	i
+datasets	.\dataproc\prepare_qualitative_evaluation.py	/^import datasets$/;"	i
+datasets	.\dataproc\vocab_index_descriptions.py	/^import datasets$/;"	i
+datasets	.\evaluation.py	/^import datasets$/;"	i
+datasets	.\get_metrics_for_saved_predictions.py	/^import datasets$/;"	i
+datasets	.\learn\tools.py	/^import datasets$/;"	i
+datasets	.\learn\training.py	/^import datasets$/;"	i
+datasets	.\log_reg.py	/^import datasets$/;"	i
+datetime	.\dataproc\concat_and_split.py	/^from datetime import datetime$/;"	i
+default	.\learn\training.py	/^                        default='gru')$/;"	v
+defaultdict	.\dataproc\build_vocab.py	/^from collections import defaultdict$/;"	i
+defaultdict	.\datasets.py	/^from collections import defaultdict$/;"	i
+defaultdict	.\evaluation.py	/^from collections import defaultdict$/;"	i
+defaultdict	.\get_metrics_for_saved_predictions.py	/^from collections import defaultdict$/;"	i
+defaultdict	.\learn\training.py	/^from collections import defaultdict$/;"	i
+defaultdict	.\log_reg.py	/^from collections import Counter, defaultdict$/;"	i
+diag_f1	.\evaluation.py	/^def diag_f1(diag_preds, diag_golds, ind2d, hadm_ids):$/;"	f
+dset	.\get_metrics_for_saved_predictions.py	/^dset = model_dir[model_dir.index('mimic'):]$/;"	v
+early_stop	.\learn\training.py	/^def early_stop(metrics_hist, criterion, patience):$/;"	f
+embed_descriptions	.\learn\models.py	/^    def embed_descriptions(self, desc_data, gpu):$/;"	m	class:BaseModel
+evaluation	.\get_metrics_for_saved_predictions.py	/^import evaluation$/;"	i
+evaluation	.\learn\training.py	/^import evaluation$/;"	i
+evaluation	.\log_reg.py	/^import evaluation$/;"	i
+extract_wvs	.\learn\models.py	/^from dataproc import extract_wvs$/;"	i
+f1_diag	.\get_metrics_for_saved_predictions.py	/^    f1_diag = evaluation.diag_f1(diag_preds, diag_golds, type_dicts[0], hadm_ids)$/;"	v
+f1_proc	.\get_metrics_for_saved_predictions.py	/^    f1_proc = evaluation.proc_f1(proc_preds, proc_golds, type_dicts[1], hadm_ids)$/;"	v
+floor	.\learn\models.py	/^from math import floor$/;"	i
+forward	.\learn\models.py	/^    def forward(self, x, target, desc_data=None, get_attention=False):$/;"	m	class:BOWPool
+forward	.\learn\models.py	/^    def forward(self, x, target, desc_data=None, get_attention=False):$/;"	m	class:VanillaConv
+forward	.\learn\models.py	/^    def forward(self, x, target, desc_data=None, get_attention=False):$/;"	m	class:VanillaRNN
+forward	.\learn\models.py	/^    def forward(self, x, target, desc_data=None, get_attention=True):$/;"	m	class:ConvAttnPool
+gensim	.\dataproc\extract_wvs.py	/^import gensim.models$/;"	i
+gensim	.\dataproc\word_embeddings.py	/^import gensim.models.word2vec as w2v$/;"	i
+gensim_to_embeddings	.\dataproc\extract_wvs.py	/^def gensim_to_embeddings(wv_file, vocab_file, Y, outfile=None):$/;"	f
+gold_inds	.\get_metrics_for_saved_predictions.py	/^    gold_inds = [1 if j in golds[hadm_id] else 0 for j in range(num_labels)]$/;"	v
+golds	.\get_metrics_for_saved_predictions.py	/^golds = defaultdict(lambda: [])$/;"	v
+hadm_ids	.\get_metrics_for_saved_predictions.py	/^hadm_ids = sorted(set(golds.keys()).intersection(set(preds.keys())))$/;"	v
+have_scores	.\get_metrics_for_saved_predictions.py	/^have_scores = os.path.exists('%s\/pred_scores_test.json' % model_dir)$/;"	v
+help	.\learn\training.py	/^                        help="coefficient for penalizing l2 norm of model weights (default: 0)")$/;"	v
+help	.\learn\training.py	/^                        help="how many epochs to wait for improved criterion metric before early stopping (default: 3)")$/;"	v
+help	.\learn\training.py	/^                        help="hyperparameter to tradeoff BCE loss and similarity embedding loss. defaults to 0, which won't create\/use the description embedding module at all. ")$/;"	v
+help	.\learn\training.py	/^                        help="learning rate for Adam optimizer (default=1e-3)")$/;"	v
+help	.\learn\training.py	/^                        help="number of layers for RNN models (default: 1)")$/;"	v
+help	.\learn\training.py	/^                        help="optional flag for multi_conv_attn to instead use concatenated filter outputs, rather than pooling over them")$/;"	v
+help	.\learn\training.py	/^                        help="optional flag for rnn to use a bidirectional model")$/;"	v
+help	.\learn\training.py	/^                        help="optional flag for testing pre-trained models from the public github")$/;"	v
+help	.\learn\training.py	/^                        help="optional flag not to print so much during training")$/;"	v
+help	.\learn\training.py	/^                        help="optional flag to save samples of good \/ bad predictions")$/;"	v
+help	.\learn\training.py	/^                        help="optional flag to use GPU if available")$/;"	v
+help	.\learn\training.py	/^                        help="optional specification of dropout (default: 0.5)")$/;"	v
+help	.\learn\training.py	/^                        help="path to a file containing sorted train data. dev\/test splits assumed to have same name format with 'train' replaced by 'dev' and 'test'")$/;"	v
+help	.\learn\training.py	/^                        help="path to a file holding pre-trained embeddings")$/;"	v
+help	.\learn\training.py	/^                        help="point to code embeddings to use for parameter initialization, if applicable")$/;"	v
+help	.\learn\training.py	/^                        help="size of conv output (default: 50)")$/;"	v
+help	.\learn\training.py	/^                        help="size of convolution filter to use. (default: 3) For multi_conv_attn, give comma separated integers, e.g. 3,4,5")$/;"	v
+help	.\learn\training.py	/^                        help="size of embedding dimension. (default: 100)")$/;"	v
+help	.\learn\training.py	/^                        help="size of rnn hidden layer (default: 128)")$/;"	v
+help	.\learn\training.py	/^                        help="size of training batches")$/;"	v
+help	.\learn\training.py	/^                        help="version of MIMIC in use (default: mimic3)")$/;"	v
+help	.\learn\training.py	/^                        help="which metric to use for early stopping (default: f1_micro)")$/;"	v
+important_spans	.\learn\interpret.py	/^def important_spans(data, output, tgt_codes, pred_codes, s, dicts, filter_size, true_str, pred_str, spans_file, fps=False):$/;"	f
+init	.\learn\training.py	/^def init(args):$/;"	f
+init_hidden	.\learn\models.py	/^    def init_hidden(self):$/;"	m	class:VanillaRNN
+inst_f1	.\evaluation.py	/^def inst_f1(yhat, y):$/;"	f
+inst_precision	.\evaluation.py	/^def inst_precision(yhat, y):$/;"	f
+inst_recall	.\evaluation.py	/^def inst_recall(yhat, y):$/;"	f
+interpret	.\learn\training.py	/^import interpret$/;"	i
+intersect_size	.\evaluation.py	/^def intersect_size(yhat, y, axis):$/;"	f
+json	.\evaluation.py	/^import json$/;"	i
+json	.\get_metrics_for_saved_predictions.py	/^import json$/;"	i
+json	.\learn\tools.py	/^import json$/;"	i
+json	.\persistence.py	/^import json$/;"	i
+learn	.\learn\interpret.py	/^import learn.models as models$/;"	i
+learn	.\learn\training.py	/^import learn.models as models$/;"	i
+learn	.\learn\training.py	/^import learn.tools as tools$/;"	i
+load_code_descriptions	.\datasets.py	/^def load_code_descriptions(version='mimic3'):$/;"	f
+load_description_vectors	.\datasets.py	/^def load_description_vectors(Y, version='mimic3'):$/;"	f
+load_embeddings	.\dataproc\extract_wvs.py	/^def load_embeddings(embed_file):$/;"	f
+load_full_codes	.\datasets.py	/^def load_full_codes(train_path, version='mimic3'):$/;"	f
+load_lookups	.\datasets.py	/^def load_lookups(args, desc_embed=False):$/;"	f
+load_vocab_dict	.\datasets.py	/^def load_vocab_dict(args, vocab_file):$/;"	f
+macro_accuracy	.\evaluation.py	/^def macro_accuracy(yhat, y):$/;"	f
+macro_f1	.\evaluation.py	/^def macro_f1(yhat, y):$/;"	f
+macro_precision	.\evaluation.py	/^def macro_precision(yhat, y):$/;"	f
+macro_recall	.\evaluation.py	/^def macro_recall(yhat, y):$/;"	f
+main	.\dataproc\prepare_qualitative_evaluation.py	/^def main():$/;"	f
+main	.\learn\training.py	/^def main(args):$/;"	f
+main	.\log_reg.py	/^def main(Y, train_fname, dev_fname, vocab_file, version, n):$/;"	f
+make_param_dict	.\learn\tools.py	/^def make_param_dict(args):$/;"	f
+make_windows	.\learn\interpret.py	/^def make_windows(starts, filter_size, attn):$/;"	f
+math	.\datasets.py	/^import math$/;"	i
+math	.\learn\tools.py	/^import math$/;"	i
+metrics	.\get_metrics_for_saved_predictions.py	/^metrics = evaluation.all_metrics(yhat, y, k=k, yhat_raw=yhat_raw)$/;"	v
+metrics_from_dicts	.\evaluation.py	/^def metrics_from_dicts(preds, golds, mdir, ind2c):$/;"	f
+micro_accuracy	.\evaluation.py	/^def micro_accuracy(yhatmic, ymic):$/;"	f
+micro_f1	.\evaluation.py	/^def micro_f1(yhatmic, ymic):$/;"	f
+micro_precision	.\evaluation.py	/^def micro_precision(yhatmic, ymic):$/;"	f
+micro_recall	.\evaluation.py	/^def micro_recall(yhatmic, ymic):$/;"	f
+model_dir	.\get_metrics_for_saved_predictions.py	/^model_dir = sys.argv[1]$/;"	v
+models	.\dataproc\extract_wvs.py	/^import gensim.models$/;"	i
+models	.\dataproc\word_embeddings.py	/^import gensim.models.word2vec as w2v$/;"	i
+models	.\learn\interpret.py	/^import learn.models as models$/;"	i
+models	.\learn\tools.py	/^from learn import models$/;"	i
+models	.\learn\training.py	/^import learn.models as models$/;"	i
+models	.\persistence.py	/^from learn import models$/;"	i
+next_labels	.\dataproc\concat_and_split.py	/^def next_labels(labelsfile):$/;"	f
+next_notes	.\dataproc\concat_and_split.py	/^def next_notes(notesfile):$/;"	f
+nltk	.\log_reg.py	/^import nltk$/;"	i
+nn	.\learn\models.py	/^import torch.nn as nn$/;"	i
+nn	.\learn\models.py	/^import torch.nn.functional as F$/;"	i
+nn	.\learn\training.py	/^import torch.nn.functional as F$/;"	i
+np	.\dataproc\build_vocab.py	/^import numpy as np$/;"	i
+np	.\dataproc\extract_wvs.py	/^import numpy as np$/;"	i
+np	.\dataproc\prepare_qualitative_evaluation.py	/^import numpy as np$/;"	i
+np	.\datasets.py	/^import numpy as np$/;"	i
+np	.\evaluation.py	/^import numpy as np$/;"	i
+np	.\get_metrics_for_saved_predictions.py	/^import numpy as np$/;"	i
+np	.\learn\interpret.py	/^import numpy as np$/;"	i
+np	.\learn\models.py	/^import numpy as np$/;"	i
+np	.\learn\tools.py	/^import numpy as np$/;"	i
+np	.\learn\training.py	/^import numpy as np$/;"	i
+np	.\log_reg.py	/^import numpy as np$/;"	i
+np	.\persistence.py	/^import numpy as np$/;"	i
+num_labels	.\get_metrics_for_saved_predictions.py	/^num_labels = len(ind2c)$/;"	v
+one_epoch	.\learn\training.py	/^def one_epoch(model, optimizer, Y, epoch, n_epochs, batch_size, data_path, version, testing, dicts, model_dir, $/;"	f
+operator	.\dataproc\build_vocab.py	/^import operator$/;"	i
+operator	.\learn\interpret.py	/^import operator$/;"	i
+operator	.\learn\training.py	/^import operator$/;"	i
+optim	.\learn\training.py	/^import torch.optim as optim$/;"	i
+os	.\dataproc\extract_wvs.py	/^import os$/;"	i
+os	.\evaluation.py	/^import os$/;"	i
+os	.\get_metrics_for_saved_predictions.py	/^import os$/;"	i
+os	.\learn\tools.py	/^import os$/;"	i
+os	.\learn\training.py	/^import os $/;"	i
+os	.\log_reg.py	/^import os$/;"	i
+pad_desc_vecs	.\datasets.py	/^def pad_desc_vecs(desc_vecs):$/;"	f
+pad_docs	.\datasets.py	/^    def pad_docs(self):$/;"	m	class:Batch
+parser	.\learn\training.py	/^    parser = argparse.ArgumentParser(description="train a neural network on some clinical documents")$/;"	v
+parts	.\get_metrics_for_saved_predictions.py	/^parts = dset.split('_')$/;"	v
+pd	.\dataproc\concat_and_split.py	/^import pandas as pd$/;"	i
+pdb	.\get_metrics_for_saved_predictions.py	/^                import pdb; pdb.set_trace()$/;"	i
+pdb	.\learn\models.py	/^            import pdb; pdb.set_trace()$/;"	i
+persistence	.\learn\tools.py	/^import persistence$/;"	i
+persistence	.\learn\training.py	/^import persistence$/;"	i
+persistence	.\log_reg.py	/^import persistence$/;"	i
+pick_model	.\learn\tools.py	/^def pick_model(args, dicts):$/;"	f
+pickle	.\learn\tools.py	/^import pickle$/;"	i
+pickle	.\log_reg.py	/^import pickle$/;"	i
+precision_at_k	.\evaluation.py	/^def precision_at_k(yhat_raw, y, k):$/;"	f
+preds	.\get_metrics_for_saved_predictions.py	/^preds = defaultdict(lambda: [])$/;"	v
+print_metrics	.\evaluation.py	/^def print_metrics(metrics):$/;"	f
+proc_f1	.\evaluation.py	/^def proc_f1(proc_preds, proc_golds, ind2p, hadm_ids):$/;"	f
+r	.\get_metrics_for_saved_predictions.py	/^    r = csv.reader(f)$/;"	v
+r	.\get_metrics_for_saved_predictions.py	/^    r = csv.reader(f, delimiter='|')$/;"	v
+random	.\dataproc\concat_and_split.py	/^import random$/;"	i
+random	.\learn\interpret.py	/^import random$/;"	i
+random	.\learn\models.py	/^import random$/;"	i
+random	.\learn\training.py	/^import random$/;"	i
+read_bows	.\log_reg.py	/^def read_bows(Y, bow_fname, c2ind, version):$/;"	f
+recall_at_k	.\evaluation.py	/^def recall_at_k(yhat_raw, y, k):$/;"	f
+reformat	.\datasets.py	/^def reformat(code, is_diag):$/;"	f
+refresh	.\learn\models.py	/^    def refresh(self, batch_size):$/;"	m	class:VanillaRNN
+results_by_type	.\evaluation.py	/^def results_by_type(Y, mdir, version='mimic3'):$/;"	f
+roc_curve	.\evaluation.py	/^from sklearn.metrics import roc_curve, auc$/;"	i
+save_embeddings	.\dataproc\extract_wvs.py	/^def save_embeddings(W, words, outfile):$/;"	f
+save_everything	.\persistence.py	/^def save_everything(args, metrics_hist_all, model, model_dir, params, criterion, evaluate=False):$/;"	f
+save_metrics	.\persistence.py	/^def save_metrics(metrics_hist_all, model_dir):$/;"	f
+save_params_dict	.\persistence.py	/^def save_params_dict(params):$/;"	f
+save_samples	.\learn\interpret.py	/^def save_samples(data, output, target_data, s, filter_size, tp_file, fp_file, dicts=None):$/;"	f
+scors	.\get_metrics_for_saved_predictions.py	/^        scors = json.load(f)$/;"	v
+set_trace	.\get_metrics_for_saved_predictions.py	/^                import pdb; pdb.set_trace()$/;"	i
+set_trace	.\learn\models.py	/^            import pdb; pdb.set_trace()$/;"	i
+sorted_file	.\dataproc\concat_and_split.py	/^sorted_file = '%s\/disch_full.csv' % MIMIC_3_DIR$/;"	v
+split_data	.\dataproc\concat_and_split.py	/^def split_data(labeledfile, base_name):$/;"	f
+stopwords	.\dataproc\vocab_index_descriptions.py	/^from nltk.corpus import stopwords$/;"	i
+sys	.\dataproc\concat_and_split.py	/^import sys$/;"	i
+sys	.\datasets.py	/^import sys$/;"	i
+sys	.\evaluation.py	/^import sys$/;"	i
+sys	.\get_metrics_for_saved_predictions.py	/^import sys$/;"	i
+sys	.\learn\interpret.py	/^import sys$/;"	i
+sys	.\learn\models.py	/^import sys$/;"	i
+sys	.\learn\training.py	/^import sys$/;"	i
+sys	.\log_reg.py	/^import sys$/;"	i
+test	.\learn\training.py	/^def test(model, Y, epoch, data_path, fold, gpu, version, code_inds, dicts, samples, model_dir, testing):$/;"	f
+time	.\learn\models.py	/^import time$/;"	i
+time	.\learn\training.py	/^import time$/;"	i
+time	.\log_reg.py	/^import time$/;"	i
+to_ret	.\datasets.py	/^    def to_ret(self):$/;"	m	class:Batch
+tokenizer	.\dataproc\get_discharge_summaries.py	/^tokenizer = RegexpTokenizer(r'\\w+')$/;"	v
+tools	.\get_metrics_for_saved_predictions.py	/^from learn import tools$/;"	i
+tools	.\learn\training.py	/^import learn.tools as tools$/;"	i
+tools	.\log_reg.py	/^from learn import tools$/;"	i
+torch	.\learn\models.py	/^import torch$/;"	i
+torch	.\learn\models.py	/^import torch.nn as nn$/;"	i
+torch	.\learn\models.py	/^import torch.nn.functional as F$/;"	i
+torch	.\learn\stacktext.py	/^import torch$/;"	i
+torch	.\learn\tools.py	/^import torch$/;"	i
+torch	.\learn\training.py	/^import torch$/;"	i
+torch	.\learn\training.py	/^import torch.nn.functional as F$/;"	i
+torch	.\learn\training.py	/^import torch.optim as optim$/;"	i
+torch	.\persistence.py	/^import torch$/;"	i
+tqdm	.\dataproc\extract_wvs.py	/^from tqdm import tqdm$/;"	i
+tqdm	.\dataproc\get_discharge_summaries.py	/^from tqdm import tqdm$/;"	i
+tqdm	.\dataproc\prepare_qualitative_evaluation.py	/^from tqdm import tqdm$/;"	i
+tqdm	.\dataproc\vocab_index_descriptions.py	/^from tqdm import tqdm$/;"	i
+tqdm	.\evaluation.py	/^from tqdm import tqdm$/;"	i
+tqdm	.\get_metrics_for_saved_predictions.py	/^from tqdm import tqdm$/;"	i
+tqdm	.\learn\training.py	/^from tqdm import tqdm$/;"	i
+tqdm	.\log_reg.py	/^from tqdm import tqdm$/;"	i
+train	.\learn\training.py	/^def train(model, optimizer, Y, epoch, batch_size, data_path, gpu, version, dicts, quiet):$/;"	f
+train_epochs	.\learn\training.py	/^def train_epochs(args, model, optimizer, params, dicts):$/;"	f
+union_size	.\evaluation.py	/^def union_size(yhat, y, axis):$/;"	f
+unseen_code_vecs	.\learn\training.py	/^def unseen_code_vecs(model, code_inds, dicts, gpu):$/;"	f
+version	.\get_metrics_for_saved_predictions.py	/^version = 'mimic2' if parts[0].endswith('2') else 'mimic3'$/;"	v
+vocab_index_descriptions	.\dataproc\vocab_index_descriptions.py	/^def vocab_index_descriptions(vocab_file, vectors_file):$/;"	f
+w2v	.\dataproc\word_embeddings.py	/^import gensim.models.word2vec as w2v$/;"	i
+word_embeddings	.\dataproc\word_embeddings.py	/^def word_embeddings(Y, notes_file, embedding_size, min_count, n_iter):$/;"	f
+write_bows	.\log_reg.py	/^def write_bows(data_fname, X, hadm_ids, y, ind2c):$/;"	f
+write_discharge_summaries	.\dataproc\get_discharge_summaries.py	/^def write_discharge_summaries(out_file):$/;"	f
+write_preds	.\persistence.py	/^def write_preds(yhat, model_dir, hids, fold, ind2c, yhat_raw=None):$/;"	f
+xavier_uniform	.\learn\models.py	/^from torch.nn.init import xavier_uniform$/;"	i
+y	.\get_metrics_for_saved_predictions.py	/^y = np.zeros((len(hadm_ids), num_labels))$/;"	v
+y	.\learn\stacktext.py	/^y=[[torch.randn(1),torch.randn(1)],[torch.randn(1),torch.randn(1)],[torch.randn(1),torch.randn(1)]]$/;"	v
+y	.\learn\stacktext.py	/^y=torch.stack(y)$/;"	v
+yhat	.\get_metrics_for_saved_predictions.py	/^yhat = np.zeros((len(hadm_ids), num_labels))$/;"	v
+yhat_inds	.\get_metrics_for_saved_predictions.py	/^    yhat_inds = [1 if j in preds[hadm_id] else 0 for j in range(num_labels)]$/;"	v
+yhat_raw	.\get_metrics_for_saved_predictions.py	/^    yhat_raw = None$/;"	v
+yhat_raw	.\get_metrics_for_saved_predictions.py	/^    yhat_raw = np.zeros((len(hadm_ids), num_labels))$/;"	v
+yhat_raw_inds	.\get_metrics_for_saved_predictions.py	/^        yhat_raw_inds = [scors[hadm_id][ind2c[j]] if ind2c[j] in scors[hadm_id] else 0 for j in range(num_labels)]$/;"	v
