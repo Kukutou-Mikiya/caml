@@ -1,7 +1,5 @@
 # caml-mimic
 
-Code for the paper [Explainable Prediction of Medical Codes from Clinical Text](https://arxiv.org/abs/1802.05695).
-
 ## Dependencies
 * Python 3.6, though 2.7 should hopefully work as well
 * pytorch 0.3.0
