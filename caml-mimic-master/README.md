@@ -1,6 +1,6 @@
 # final project
 
-<<<<<<< HEAD
+
 Our experiment results saved in the folder "saved_models"
 We reference the data processing etc. from https://github.com/jamesmullenbach/caml-mimic
 
