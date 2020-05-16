@@ -1,11 +1,10 @@
 # final project
 
-<<<<<<< HEAD
+This code repository is aimed to carry out experiments on CAML model and other baseline models on multi-label text classification task.
 Our experiment results saved in the folder "saved_models"
-We reference the data processing etc. from https://github.com/jamesmullenbach/caml-mimic
+We reference the source code of data processing etc. from https://github.com/jamesmullenbach/caml-mimic
 
-=======
->>>>>>> 85ca4920e5cd5c5967aec2f456dbefd35e500f66
+
 ## Dependencies
 * Python 3.6
 * pytorch 1.3.0
@@ -22,16 +21,12 @@ We reference the data processing etc. from https://github.com/jamesmullenbach/ca
 Firstly, We cannot provide data from MIMIC3 due to licensing issues.
 You need to download these data manually from https://mimic.physionet.org/
 To get started, first edit `constants.py` to point to the directories holding your copies of the MIMIC-III datasets. Then, organize your data with the following structure:
+
 ```
 mimicdata
 |   D_ICD_DIAGNOSES.csv
 |   D_ICD_PROCEDURES.csv
 |   ICD9_descriptions (already in repo)
-└───mimic2/
-|   |   MIMIC_RAW_DSUMS
-|   |   MIMIC_ICD9_mapping
-|   |   training_indices.data
-|   |   testing_indices.data
 └───mimic3/
 |   |   NOTEEVENTS.csv
 |   |   DIAGNOSES_ICD.csv
@@ -39,12 +34,11 @@ mimicdata
 |   |   *_hadm_ids.csv (already in repo)
 ```
 
-
-Now, make sure your python path includes the base directory of this repository. Then, in Jupyter Notebook, run all cells (in the menu, click Cell -> Run All) in `notebooks/dataproc_mimic_II.ipynb` and `notebooks/dataproc_mimic_III.ipynb`. These will take some time, so go for a walk or bake some cookies while you wait. You can speed it up by skipping the "Pre-train word embeddings" sections. 
+Now, make sure your python path includes the base directory of this repository. Then, in Jupyter Notebook, run all cells (in the menu, click Cell -> Run All) in  `notebooks/dataproc_mimic_III.ipynb`. These will take some time, so go for a walk or bake some cookies while you wait. 
 
 ## Saved models
 
-To directly reproduce the results of the paper, first run the data processing steps above. We provide our pre-trained models for CAML and DR-CAML for the MIMIC-III full-label dataset. They are saved as `model.pth` in their respective directories. We also provide an `evaluate_model.sh` script to reproduce our results from the models.
+To directly reproduce the results in our report, first run the data processing steps above. We provide our pre-trained models for CAML  for the MIMIC-III 50-label dataset. They are saved as `model.pth` in their respective directories. We also provide an `evaluate_model.sh` script to reproduce our results from the models.
 
 ## Training a new model
 
@@ -57,5 +51,5 @@ The predictions that provide the results in the paper are provided in `predictio
 * `preds_test.psv`, a pipe-separated value file containing the HADM_ID's and model predictions of all testing examples
 * `train_new_model.sh`, which trains a new model with the hyperparameters provided in the paper.
 
-To reproduce our F-measure results from the predictions, for example the CNN results on MIMIC-II, run `python get_metrics_for_saved_predictions.py predictions/CNN_mimic2_full`.
+To reproduce our F-measure results from the predictions, for example the CAML results , run `python get_metrics_for_saved_predictions.py predictions/CAML_mimic3_50`.
 
