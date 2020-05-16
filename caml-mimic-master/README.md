@@ -4,8 +4,7 @@
 Our experiment results saved in the folder "saved_models"
 We reference the data processing etc. from https://github.com/jamesmullenbach/caml-mimic
 
-=======
->>>>>>> 85ca4920e5cd5c5967aec2f456dbefd35e500f66
+
 ## Dependencies
 * Python 3.6
 * pytorch 1.3.0
