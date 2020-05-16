@@ -75,7 +75,7 @@ def train_epochs(args, model, optimizer, params, dicts):
         if epoch == 0 and not args.test_model:
                 #修复os不兼容问题
             #model_dir = os.path.join(MODEL_DIR, '_'.join([args.model, time.strftime('%b_%d_%H:%M:%S', time.localtime())]))
-            model_dir = os.path.join(MODEL_DIR, '_'.join([args.model, time.strftime('%b_%d_%H', time.localtime())]))
+            model_dir = os.path.join(MODEL_DIR, '_'.join([args.model, time.strftime('%b_%d_%H_%M', time.localtime())]))
             os.makedirs(model_dir)
         elif args.test_model:
             model_dir = os.path.dirname(os.path.abspath(args.test_model))
@@ -147,6 +147,8 @@ def one_epoch(model, optimizer, Y, epoch, n_epochs, batch_size, data_path, versi
     fold = 'test' if version == 'mimic2' else 'dev'
     if epoch == n_epochs - 1:
         print("last epoch: testing on test and train sets")
+        #保存模型
+        #torch.save(model.state_dict(), model_dir+'/model.pth')
         testing = True
         quiet = False
 
@@ -192,6 +194,8 @@ def train(model, optimizer, Y, epoch, batch_size, data_path, gpu, version, dicts
         #print(data)
         #print(code_set)
         data, target = Variable(torch.LongTensor(data)), Variable(torch.FloatTensor(target))
+        #print('fuck target')
+        #print(target.size())
         unseen_code_inds = unseen_code_inds.difference(code_set)
         if gpu:
             data = data.cuda()
@@ -283,19 +287,28 @@ def test(model, Y, epoch, data_path, fold, gpu, version, code_inds, dicts, sampl
         target_data = target.data.cpu().numpy()
         '''
         if batch_idx%25==0:
-            print("target_data:")
+            print("output:\n")
+            print(output)
+            print("target_data:\n")
             print(target_data)
-            tgt_codes = np.where(target_data[0] == 1)[0]
-            true_str = "Y_true: " + str(tgt_codes)
+            #tgt_codes = np.where(target_data[0] == 1)[0]
+            #true_str = "Y_true: " + str(tgt_codes)
             output_rd = np.round(output)
             ttt=np.where(output_rd[0] == 1)
             ttt_str = "ttt: " + str(ttt)
             pred_codes = np.where(output_rd[0] == 1)[0]
-            pred_str = "Y_pred: " + str(pred_codes)
-            print(pred_str)
-            print(true_str)
+            pred_str = "Y_pred: " + str(pred_codes)            
+            #print(true_str)
             print(ttt_str)
-            '''
+            print(pred_str)
+            print("window_size:\n")
+            window_size = model.conv.weight.data.size()[2]
+            print(window_size)
+            print("data_size:\n")
+            print(data.size())
+            print("alpha_size:\n")
+            print(alpha.size())
+                '''
         if get_attn and samples:
             #一个神秘的源代码参数声明bug，比函数声明多了一个参数。
             #interpret.save_samples(data, output, target_data, alpha, window_size, epoch, tp_file, fp_file, dicts=dicts)
@@ -324,6 +337,9 @@ def test(model, Y, epoch, data_path, fold, gpu, version, code_inds, dicts, sampl
     metrics = evaluation.all_metrics(yhat, y, k=k, yhat_raw=yhat_raw)
     evaluation.print_metrics(metrics)
     metrics['loss_%s' % fold] = np.mean(losses)
+
+    
+
     return metrics
 
 if __name__ == "__main__":
@@ -332,7 +348,7 @@ if __name__ == "__main__":
                         help="path to a file containing sorted train data. dev/test splits assumed to have same name format with 'train' replaced by 'dev' and 'test'")
     parser.add_argument("vocab", type=str, help="path to a file holding vocab word list for discretizing words")
     parser.add_argument("Y", type=str, help="size of label space")
-    parser.add_argument("model", type=str, choices=["cnn_vanilla", "rnn", "conv_attn", "multi_conv_attn", "logreg", "saved"], help="model")
+    parser.add_argument("model", type=str, choices=["cnn_vanilla", "rnn", "conv_attn", "my_conv_attn","multi_conv_attn", "logreg", "saved"], help="model")
     parser.add_argument("n_epochs", type=int, help="number of epochs to train")
     parser.add_argument("--embed-file", type=str, required=False, dest="embed_file",
                         help="path to a file holding pre-trained embeddings")

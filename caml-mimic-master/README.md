@@ -1,10 +1,11 @@
-# caml-mimic
+# final project
 
-Code for the paper [Explainable Prediction of Medical Codes from Clinical Text](https://arxiv.org/abs/1802.05695).
+Our experiment results saved in the folder "saved_models"
+We reference the data processing etc. from https://github.com/jamesmullenbach/caml-mimic
 
 ## Dependencies
-* Python 3.6, though 2.7 should hopefully work as well
-* pytorch 0.3.0
+* Python 3.6
+* pytorch 1.3.0
 * tqdm
 * scikit-learn 0.19.1
 * numpy 1.13.3, scipy 0.19.1, pandas 0.20.3
@@ -12,12 +13,12 @@ Code for the paper [Explainable Prediction of Medical Codes from Clinical Text](
 * gensim 3.2.0
 * nltk 3.2.4
 
-Other versions may also work, but the ones listed are the ones I've used
-
 
 ## Data processing
 
-To get started, first edit `constants.py` to point to the directories holding your copies of the MIMIC-II and MIMIC-III datasets. Then, organize your data with the following structure:
+Firstly, We cannot provide data from MIMIC3 due to licensing issues.
+You need to download these data manually from https://mimic.physionet.org/
+To get started, first edit `constants.py` to point to the directories holding your copies of the MIMIC-III datasets. Then, organize your data with the following structure:
 ```
 mimicdata
 |   D_ICD_DIAGNOSES.csv
@@ -34,7 +35,7 @@ mimicdata
 |   |   PROCEDURES_ICD.csv
 |   |   *_hadm_ids.csv (already in repo)
 ```
-The MIMIC-II files can be obtained from [this repository](https://physionet.org/works/ICD9CodingofDischargeSummaries/).
+
 
 Now, make sure your python path includes the base directory of this repository. Then, in Jupyter Notebook, run all cells (in the menu, click Cell -> Run All) in `notebooks/dataproc_mimic_II.ipynb` and `notebooks/dataproc_mimic_III.ipynb`. These will take some time, so go for a walk or bake some cookies while you wait. You can speed it up by skipping the "Pre-train word embeddings" sections. 
 

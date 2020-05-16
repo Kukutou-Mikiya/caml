@@ -56,6 +56,7 @@ def important_spans(data, output, tgt_codes, pred_codes, s, dicts, filter_size, 
             #find most important windows
             attn = s[0][p_code].data.cpu().numpy()
             #merge overlapping intervals
+            #输出attn的从大到小排列的前10大的注意力的snippets的位置
             imps = attn.argsort()[-10:][::-1]
             windows = make_windows(imps, filter_size, attn)
             kgram_strs = []

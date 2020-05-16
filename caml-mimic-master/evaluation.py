@@ -71,10 +71,14 @@ def macro_accuracy(yhat, y):
 
 def macro_precision(yhat, y):
     num = intersect_size(yhat, y, 0) / (yhat.sum(axis=0) + 1e-10)
+    print('macro P:')
+    print(num)
     return np.mean(num)
 
 def macro_recall(yhat, y):
     num = intersect_size(yhat, y, 0) / (y.sum(axis=0) + 1e-10)
+    print('macro R:')
+    print(num)
     return np.mean(num)
 
 def macro_f1(yhat, y):

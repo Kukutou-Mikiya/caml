@@ -178,22 +178,237 @@ class ConvAttnPool(BaseModel):
         x = self.embed(x)
         x = self.embed_drop(x)
         x = x.transpose(1, 2)
-
+        '''    
+        截图用代码！！！----
+        #x shape is torch.Size([8, k, 400]) where k is an unfixed number
+        #U.weight shape is torch.Size([50, 400])
+        alpha = F.softmax(self.U.weight.matmul(x.transpose(1,2)), dim=2)
+        #alpha shape is torch.Size([8, 50, k])
+        m = alpha.matmul(x)
+        #m shape is torch.Size([8, 50, 400])
+        #final.weight shape is torch.Size([50, 400])
+        y = self.final.weight.mul(m).sum(dim=2).add(self.final.bias)
+        #y shape is torch.Size([8, 50])
+        截图用代码！！！----
+        '''
         #apply convolution and nonlinearity (tanh)
         x = torch.tanh(self.conv(x).transpose(1,2))
-        #x = F.relu(self.conv(x).transpose(1,2))
+
         #apply attention
-        alpha = F.softmax(self.U.weight.matmul(x.transpose(1,2)), dim=2)
-        #print(alpha)
-        #b = torch.full(alpha.size(), 1).cuda()        
-        #alpha=torch.add(alpha, b)
-        #print(alpha)
+        #alpha = F.softmax(self.U.weight.matmul(x.transpose(1,2)), dim=2)
+        alpha = self.U.weight.matmul(x.transpose(1,2))
+
         #document representations are weighted sums using the attention. Can compute all at once as a matmul
         m = alpha.matmul(x)
         #final layer classification
         y = self.final.weight.mul(m).sum(dim=2).add(self.final.bias)
-
         
+        if desc_data is not None:
+            #run descriptions through description module
+            b_batch = self.embed_descriptions(desc_data, self.gpu)
+            #get l2 similarity loss
+            diffs = self._compare_label_embeddings(target, b_batch, desc_data)
+        else:
+            diffs = None
+            
+        #final sigmoid to get predictions
+        yhat = y
+        loss = self._get_loss(yhat, target, diffs)
+        return yhat, loss, alpha
+
+class myConvAttnPool(BaseModel):
+
+    def __init__(self, Y, embed_file, kernel_size, num_filter_maps, lmbda, gpu, dicts, embed_size=100, dropout=0.5, code_emb=None):
+        super(myConvAttnPool, self).__init__(Y, embed_file, dicts, lmbda, dropout=dropout, gpu=gpu, embed_size=embed_size)
+
+        #pytorch版本更正，xavier_uniform更改为xavier_uniform_
+        #initialize conv layer as in 2.1
+        self.conv = nn.Conv1d(self.embed_size, num_filter_maps, kernel_size=kernel_size, padding=int(floor(kernel_size/2)))
+        xavier_uniform_(self.conv.weight)
+        
+        #context vectors for computing attention as in 2.2
+        self.U = nn.Linear(num_filter_maps, Y)
+        xavier_uniform_(self.U.weight)
+        
+        #final layer: create a matrix to use for the L binary classifiers as in 2.3
+        self.final = nn.Linear(num_filter_maps, Y)
+        xavier_uniform_(self.final.weight)
+        
+        
+        #initialize with trained code embeddings if applicable
+        if code_emb:
+            self._code_emb_init(code_emb, dicts)
+            #also set conv weights to do sum of inputs
+            weights = torch.eye(self.embed_size).unsqueeze(2).expand(-1,-1,kernel_size)/kernel_size
+            self.conv.weight.data = weights.clone()
+            self.conv.bias.data.zero_()
+        
+        #conv for label descriptions as in 2.5
+        #description module has its own embedding and convolution layers
+        if lmbda > 0:
+            W = self.embed.weight.data
+            self.desc_embedding = nn.Embedding(W.size()[0], W.size()[1], padding_idx=0)
+            self.desc_embedding.weight.data = W.clone()
+
+            self.label_conv = nn.Conv1d(self.embed_size, num_filter_maps, kernel_size=kernel_size, padding=int(floor(kernel_size/2)))
+            xavier_uniform(self.label_conv.weight)
+
+            self.label_fc1 = nn.Linear(num_filter_maps, num_filter_maps)
+            xavier_uniform(self.label_fc1.weight)
+        
+    def _code_emb_init(self, code_emb, dicts):
+        code_embs = KeyedVectors.load_word2vec_format(code_emb)
+        weights = np.zeros(self.final.weight.size())
+        for i in range(self.Y):
+            code = dicts['ind2c'][i]
+            weights[i] = code_embs[code]
+        self.U.weight.data = torch.Tensor(weights).clone()
+        self.final.weight.data = torch.Tensor(weights).clone()
+        
+    def forward(self, x, target, desc_data=None, get_attention=True):
+        #get embeddings and apply dropout
+        '''
+        #!!!!!!!!!!!----
+        #x shape is torch.Size([8, k, 400]) where k is an unfixed number, 8 is the batch size
+        #U.weight shape is torch.Size([50, 400])
+        x= F.max_pool1d(x.transpose(1,2), kernel_size=x.size()[1])
+        #after max pooling, x shape is torch.Size([8, 400, 1])
+        alpha = self.U.weight.mul(x.transpose(1,2)) 
+        #alpha shape is torch.Size([8, 50, 400])
+        #final.weight shape is torch.Size([50, 400])
+        y = self.final.weight.mul(alpha).sum(dim=2).add(self.final.bias)
+        #y shape is torch.Size([8, 50])
+        #!!!!!!!!!!!!!----
+        '''
+        #self.U= self.U.cuda()
+        #self.conv = self.conv.cuda()
+        #self.final = self.final.cuda()
+        x = self.embed(x)
+        x = self.embed_drop(x)
+        x = x.transpose(1, 2)
+        #apply convolution and nonlinearity (tanh)
+        x = torch.tanh(self.conv(x).transpose(1,2))
+        #print('\nx conv')
+        #print(x.size())
+        #sub-sample
+        #x= F.max_pool1d(x.transpose(1,2), kernel_size=x.size()[1])
+        x= F.max_pool1d(x.transpose(1,2).contiguous(), kernel_size=x.size()[1])
+        #print('\nx max_pool1d')
+        #print(x.size())
+        #x = x.squeeze(dim=2)
+        #apply attention
+        alpha = self.U.weight.mul(x.transpose(1,2))
+
+        alpha = F.softmax(alpha, dim=2)
+
+
+        #document representations are weighted sums using the attention. Can compute all at once as a matmul
+        #final layer classification
+        y = self.final.weight.mul(alpha).sum(dim=2).add(self.final.bias)
+ 
+        if desc_data is not None:
+            #run descriptions through description module
+            b_batch = self.embed_descriptions(desc_data, self.gpu)
+            #get l2 similarity loss
+            diffs = self._compare_label_embeddings(target, b_batch, desc_data)
+        else:
+            diffs = None
+            
+        #final sigmoid to get predictions
+        yhat = y
+        loss = self._get_loss(yhat, target, diffs)
+        return yhat, loss, alpha
+
+class myConvAttnPool(BaseModel):
+
+    def __init__(self, Y, embed_file, kernel_size, num_filter_maps, lmbda, gpu, dicts, embed_size=100, dropout=0.5, code_emb=None):
+        super(myConvAttnPool, self).__init__(Y, embed_file, dicts, lmbda, dropout=dropout, gpu=gpu, embed_size=embed_size)
+
+        #pytorch版本更正，xavier_uniform更改为xavier_uniform_
+        #initialize conv layer as in 2.1
+        self.conv = nn.Conv1d(self.embed_size, num_filter_maps, kernel_size=kernel_size, padding=int(floor(kernel_size/2)))
+        xavier_uniform_(self.conv.weight)
+        
+        #context vectors for computing attention as in 2.2
+        self.U = nn.Linear(num_filter_maps, Y)
+        xavier_uniform_(self.U.weight)
+        
+        #final layer: create a matrix to use for the L binary classifiers as in 2.3
+        self.final = nn.Linear(num_filter_maps, Y)
+        xavier_uniform_(self.final.weight)
+        
+        
+        #initialize with trained code embeddings if applicable
+        if code_emb:
+            self._code_emb_init(code_emb, dicts)
+            #also set conv weights to do sum of inputs
+            weights = torch.eye(self.embed_size).unsqueeze(2).expand(-1,-1,kernel_size)/kernel_size
+            self.conv.weight.data = weights.clone()
+            self.conv.bias.data.zero_()
+        
+        #conv for label descriptions as in 2.5
+        #description module has its own embedding and convolution layers
+        if lmbda > 0:
+            W = self.embed.weight.data
+            self.desc_embedding = nn.Embedding(W.size()[0], W.size()[1], padding_idx=0)
+            self.desc_embedding.weight.data = W.clone()
+
+            self.label_conv = nn.Conv1d(self.embed_size, num_filter_maps, kernel_size=kernel_size, padding=int(floor(kernel_size/2)))
+            xavier_uniform(self.label_conv.weight)
+
+            self.label_fc1 = nn.Linear(num_filter_maps, num_filter_maps)
+            xavier_uniform(self.label_fc1.weight)
+        
+    def _code_emb_init(self, code_emb, dicts):
+        code_embs = KeyedVectors.load_word2vec_format(code_emb)
+        weights = np.zeros(self.final.weight.size())
+        for i in range(self.Y):
+            code = dicts['ind2c'][i]
+            weights[i] = code_embs[code]
+        self.U.weight.data = torch.Tensor(weights).clone()
+        self.final.weight.data = torch.Tensor(weights).clone()
+        
+    def forward(self, x, target, desc_data=None, get_attention=True):
+        #get embeddings and apply dropout
+        '''
+        #!!!!!!!!!!!----
+        #x shape is torch.Size([8, k, 400]) where k is an unfixed number, 8 is the batch size
+        #U.weight shape is torch.Size([50, 400])
+        x= F.max_pool1d(x.transpose(1,2), kernel_size=x.size()[1])
+        #after max pooling, x shape is torch.Size([8, 400, 1])
+        alpha = self.U.weight.mul(x.transpose(1,2)) 
+        #alpha shape is torch.Size([8, 50, 400])
+        #final.weight shape is torch.Size([50, 400])
+        y = self.final.weight.mul(alpha).sum(dim=2).add(self.final.bias)
+        #y shape is torch.Size([8, 50])
+        #!!!!!!!!!!!!!----
+        '''
+        #self.U= self.U.cuda()
+        #self.conv = self.conv.cuda()
+        #self.final = self.final.cuda()
+        x = self.embed(x)
+        x = self.embed_drop(x)
+        x = x.transpose(1, 2)
+        #apply convolution and nonlinearity (tanh)
+        x = torch.tanh(self.conv(x).transpose(1,2))
+        #print('\nx conv')
+        #print(x.size())
+        #sub-sample
+        #x= F.max_pool1d(x.transpose(1,2), kernel_size=x.size()[1])
+        x= F.max_pool1d(x.transpose(1,2).contiguous(), kernel_size=x.size()[1])
+        #print('\nx max_pool1d')
+        #print(x.size())
+        #x = x.squeeze(dim=2)
+        #apply attention
+        alpha = self.U.weight.mul(x.transpose(1,2))
+
+        alpha = F.softmax(alpha, dim=2)
+
+
+        #document representations are weighted sums using the attention. Can compute all at once as a matmul
+        #final layer classification
+        y = self.final.weight.mul(alpha).sum(dim=2).add(self.final.bias)
+ 
         if desc_data is not None:
             #run descriptions through description module
             b_batch = self.embed_descriptions(desc_data, self.gpu)
@@ -214,11 +429,11 @@ class VanillaConv(BaseModel):
         super(VanillaConv, self).__init__(Y, embed_file, dicts, dropout=dropout, embed_size=embed_size) 
         #initialize conv layer as in 2.1
         self.conv = nn.Conv1d(self.embed_size, num_filter_maps, kernel_size=kernel_size)
-        xavier_uniform(self.conv.weight)
+        xavier_uniform_(self.conv.weight)
 
         #linear output
         self.fc = nn.Linear(num_filter_maps, Y)
-        xavier_uniform(self.fc.weight)
+        xavier_uniform_(self.fc.weight)
 
     def forward(self, x, target, desc_data=None, get_attention=False):
         #embed
@@ -228,6 +443,7 @@ class VanillaConv(BaseModel):
 
         #conv/max-pooling
         c = self.conv(x)
+
         if get_attention:
             #get argmax vector too
             x, argmax = F.max_pool1d(F.tanh(c), kernel_size=c.size()[2], return_indices=True)
@@ -235,6 +451,7 @@ class VanillaConv(BaseModel):
         else:
             x = F.max_pool1d(F.tanh(c), kernel_size=c.size()[2])
             attn = None
+
         x = x.squeeze(dim=2)
 
         #linear output
