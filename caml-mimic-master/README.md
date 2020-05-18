@@ -38,7 +38,7 @@ Now, make sure your python path includes the base directory of this repository. 
 
 ## Saved models
 
-To directly reproduce the results in our report, first run the data processing steps above. We provide our pre-trained models for CAML  for the MIMIC-III 50-label dataset. They are saved as `model.pth` in their respective directories. We also provide an `evaluate_model.sh` script to reproduce our results from the models.
+To directly reproduce the results in our report, first run the data processing steps above. We provide our pre-trained models for our improved model in Section 5.4 in the report. They are saved as `model.pth` in their respective directories(like `predictions\improved_model_in_Section_5.4`). We also provide an `evaluate_model.sh` script to reproduce our results from the models.
 
 ## Training a new model
 
