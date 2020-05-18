@@ -104,6 +104,7 @@ def train_epochs(args, model, optimizer, params, dicts):
                 test_only = True
                 args.test_model = '%s/model_best_%s.pth' % (model_dir, args.criterion)
                 model = tools.pick_model(args, dicts)
+                torch.save(model.state_dict(), model_dir+'/model.pth')
     return epoch+1
 
 def early_stop(metrics_hist, criterion, patience):
@@ -148,7 +149,7 @@ def one_epoch(model, optimizer, Y, epoch, n_epochs, batch_size, data_path, versi
     if epoch == n_epochs - 1:
         print("last epoch: testing on test and train sets")
         #保存模型
-        #torch.save(model.state_dict(), model_dir+'/model.pth')
+        torch.save(model.state_dict(), model_dir+'/model.pth')
         testing = True
         quiet = False
 
@@ -348,7 +349,7 @@ if __name__ == "__main__":
                         help="path to a file containing sorted train data. dev/test splits assumed to have same name format with 'train' replaced by 'dev' and 'test'")
     parser.add_argument("vocab", type=str, help="path to a file holding vocab word list for discretizing words")
     parser.add_argument("Y", type=str, help="size of label space")
-    parser.add_argument("model", type=str, choices=["cnn_vanilla", "rnn", "conv_attn", "my_conv_attn","multi_conv_attn", "logreg", "saved"], help="model")
+    parser.add_argument("model", type=str, choices=["cnn_vanilla", "rnn", "conv_attn", "my_conv_attn","ablation_experiment_B","ablation_experiment_A","multi_conv_attn", "logreg", "saved"], help="model")
     parser.add_argument("n_epochs", type=int, help="number of epochs to train")
     parser.add_argument("--embed-file", type=str, required=False, dest="embed_file",
                         help="path to a file holding pre-trained embeddings")
