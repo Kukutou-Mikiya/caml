@@ -14,7 +14,8 @@ import numpy as np
 import operator
 import random
 import sys
-sys.path.append('C:/Users/Veid/Desktop/caml/caml-mimic-master')
+#sys.path.append('C:/Users/Veid/Desktop/caml/caml-mimic-master')
+sys.path.append("../..")
 import time
 from tqdm import tqdm
 from collections import defaultdict
