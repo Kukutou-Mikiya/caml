@@ -1,0 +1,1 @@
+python ../../learn/training.py ../../mimicdata/mimic3/train_50.csv ../../mimicdata/mimic3/vocab.csv 50 ablation_experiment_B 200 --filter-size 10 --num-filter-maps 400 --dropout 0.2 --patience 10 --criterion prec_at_8 --lr 0.0001 --public-model --test-model model.pth --gpu
