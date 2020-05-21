@@ -7,12 +7,11 @@
  "cell_type": "gru",
  "rnn_layers": 1,
  "lmbda": 0,
- "command": "python ../../learn/training.py ../../mimicdata/mimic3/train_50.csv ../../mimicdata/mimic3/vocab.csv 50 conv_attn 200 --filter-size 10 --num-filter-maps 400 --dropout 0.2 --patience 10 --criterion f1_macro --lr 0.0001 --embed-file ../../mimicdata/mimic3/processed_full.embed --gpu",
+ "command": "python ../../learn/training.py ../../mimicdata/mimic3/train_50.csv ../../mimicdata/mimic3/vocab.csv 50 conv_attn 200 --filter-size 10 --num-filter-maps 400 --dropout 0.2 --patience 10 --criterion prec_at_8 --lr 0.0001 --public-model --test-model model.pth --gpu",
  "weight_decay": 0,
  "version": "mimic3",
  "data_path": "../../mimicdata/mimic3/train_50.csv",
  "vocab": "../../mimicdata/mimic3/vocab.csv",
- "embed_file": "../../mimicdata/mimic3/processed_full.embed",
  "lr": 0.0001,
- "model_dir": "C:\\Users\\Veid\\Desktop\\caml\\caml-mimic-master\\saved_models\\conv_attn_May_19_00_35"
+ "model_dir": "C:\\Users\\Veid\\Desktop\\caml\\caml-mimic-master\\predictions\\improved_model_in_Section_5.4"
 }
