@@ -1,7 +1,8 @@
 # final project
 
 This code repository is aimed to carry out experiments on CAML model and other baseline models on multi-label text classification task.
-Our experiment results saved in the folder "saved_models".
+
+Our experiment results and trained models saved in subdirectories of `predictions/` (like `predictions/improved_model_in_Section_5.4`) The metrics of experiments are saved as "metrics.json". To reproduce the metrics/prediction results from our model, see following  "Saved models" and "Training a new model" parts in this manual.
 
 We reference the source code of data processing etc. from https://github.com/jamesmullenbach/caml-mimic
 
@@ -40,7 +41,7 @@ Now, make sure your python path includes the base directory of this repository. 
 
 ## Saved models
 
-To directly reproduce the results in our report, first run the data processing steps above. We provide our pre-trained models for ablation experiment A and B in the report Section 5.3 , and our improved model in the report Section 5.4. They are saved as `model.pth` in their respective directories(like `predictions\improved_model_in_Section_5.4`). We also provide an `evaluate_model.sh` script to reproduce our results from the models.
+To directly reproduce the results in our report, first run the data processing steps above. We provide our pre-trained models for ablation experiment A and B in the report Section 5.3 , and our improved model in the report Section 5.4. They are saved as `model.pth` in their respective directories(like `predictions\improved_model_in_Section_5.4`). We provide an `evaluate_model.sh` script to reproduce our results from the models.
 
 ## Training a new model
 
