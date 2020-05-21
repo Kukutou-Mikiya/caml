@@ -19,7 +19,8 @@ We reference the source code of data processing etc. from https://github.com/jam
 ## Data processing
 
 Firstly, We cannot provide data from MIMIC3 due to licensing issues.
-You need to download these data manually from https://mimic.physionet.org/
+You need to download data files in the following directory manually from https://mimic.physionet.org/
+
 To get started, first edit `constants.py` to point to the directories holding your copies of the MIMIC-III datasets. Then, organize your data with the following structure:
 
 ```
