@@ -1,7 +1,8 @@
 # final project
 
 This code repository is aimed to carry out experiments on CAML model and other baseline models on multi-label text classification task.
-Our experiment results saved in the folder "saved_models"
+Our experiment results saved in the folder "saved_models".
+
 We reference the source code of data processing etc. from https://github.com/jamesmullenbach/caml-mimic
 
 
@@ -19,7 +20,8 @@ We reference the source code of data processing etc. from https://github.com/jam
 ## Data processing
 
 Firstly, We cannot provide data from MIMIC3 due to licensing issues.
-You need to download these data manually from https://mimic.physionet.org/
+You need to download data files in the following directory manually from https://mimic.physionet.org/
+
 To get started, first edit `constants.py` to point to the directories holding your copies of the MIMIC-III datasets. Then, organize your data with the following structure:
 
 ```
@@ -38,7 +40,7 @@ Now, make sure your python path includes the base directory of this repository. 
 
 ## Saved models
 
-To directly reproduce the results in our report, first run the data processing steps above. We provide our pre-trained models for our improved model in Section 5.4 in the report. They are saved as `model.pth` in their respective directories(like `predictions\improved_model_in_Section_5.4`). We also provide an `evaluate_model.sh` script to reproduce our results from the models.
+To directly reproduce the results in our report, first run the data processing steps above. We provide our pre-trained models for ablation experiment A and B in the report Section 5.3 , and our improved model in the report Section 5.4. They are saved as `model.pth` in their respective directories(like `predictions\improved_model_in_Section_5.4`). We also provide an `evaluate_model.sh` script to reproduce our results from the models.
 
 ## Training a new model
 
@@ -46,10 +48,9 @@ To train a new model from scratch, please use the script `learn/training.py`. Ex
 
 ## Model predictions
 
-The predictions that provide the results in the paper are provided in `predictions/`. Each directory contains: 
+The predictions that provide the results in the report are provided in `predictions/`. Each directory contains: 
 
 * `preds_test.psv`, a pipe-separated value file containing the HADM_ID's and model predictions of all testing examples
 * `train_new_model.sh`, which trains a new model with the hyperparameters provided in the paper.
 
-To reproduce our F-measure results from the predictions, for example the CAML results , run `python get_metrics_for_saved_predictions.py predictions/CAML_mimic3_50`.
 
