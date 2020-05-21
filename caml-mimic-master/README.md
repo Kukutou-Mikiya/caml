@@ -1,8 +1,8 @@
 # final project
 
-This code repository is aimed to carry out experiments on CAML model and other baseline models on multi-label text classification task.
+This code repository is aimed to carry out our experiments mentioned in the Chapter4 and Chapter5 of the report.
 
-Our experiment results and trained models saved in subdirectories of `predictions/` (like `predictions/improved_model_in_Section_5.4`) The metrics of experiments are saved as "metrics.json". To reproduce the metrics/prediction results from our model, see following  "Saved models" and "Training a new model" parts in this manual.
+Our experiment results and trained models saved in subdirectories of `predictions/` (like `predictions/improved_model_in_Section_5.4`). The metrics of experiments are saved as "metrics.json". To reproduce the metrics/prediction results from our model, see following  "Saved models" and "Training a new model" parts in this manual.
 
 We reference the source code of data processing etc. from https://github.com/jamesmullenbach/caml-mimic
 
