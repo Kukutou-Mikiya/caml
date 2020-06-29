@@ -151,5 +151,3 @@ def next_notes(notesfile):
             cur_text += " " + text
     yield cur_subj, cur_text, cur_hadm
 
-sorted_file = '%s/disch_full.csv' % MIMIC_3_DIR
-a=concat_data('%s/ALL_CODES_filtered.csv' % MIMIC_3_DIR, sorted_file)

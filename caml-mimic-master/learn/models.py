@@ -22,7 +22,8 @@ class BaseModel(nn.Module):
 
     def __init__(self, Y, embed_file, dicts, lmbda=0, dropout=0.5, gpu=True, embed_size=100):
         super(BaseModel, self).__init__()
-        torch.manual_seed(1337)
+        #torch.manual_seed(1337)
+        torch.manual_seed(7)
         self.gpu = gpu
         self.Y = Y
         self.embed_size = embed_size
