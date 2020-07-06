@@ -6,5 +6,5 @@ MAX_LENGTH = 2500
 MODEL_DIR = 'C:/Users/Veid/Desktop/caml/caml-mimic-master/saved_models'
 
 DATA_DIR = 'C:/Users/Veid/Desktop/caml/caml-mimic-master/mimicdata'
-MIMIC_3_DIR = 'C:/Users/Veid\Desktop/caml/caml-mimic-master/mimicdata/mimic3'
-MIMIC_2_DIR = 'C:/Users/Veid\Desktop/caml/caml-mimic-master/mimicdata/mimic2'
+MIMIC_3_DIR = 'C:/Users/Veid/Desktop/caml/caml-mimic-master/mimicdata/mimic3'
+MIMIC_2_DIR = 'C:/Users/Veid/Desktop/caml/caml-mimic-master/mimicdata/mimic2'

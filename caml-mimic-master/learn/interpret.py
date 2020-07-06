@@ -35,6 +35,7 @@ def save_samples(data, output, target_data, s, filter_size, tp_file, fp_file, di
 def important_spans(data, output, tgt_codes, pred_codes, s, dicts, filter_size, true_str, pred_str, spans_file, fps=False):
     """
         looks only at the first instance in the batch
+        fps: false positive
     """
     ind2w, ind2c, desc_dict = dicts['ind2w'], dicts['ind2c'], dicts['desc']
     for p_code in pred_codes:

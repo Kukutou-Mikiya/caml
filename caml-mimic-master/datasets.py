@@ -66,7 +66,8 @@ class Batch:
         if self.desc_embed:
             self.descs.append(pad_desc_vecs(desc_vecs))
         #reset length
-        self.length = min(self.max_length, length)
+        if length>self.length:
+            self.length = min(self.max_length, length)
 
     def pad_docs(self):
         #pad all docs to have self.length
