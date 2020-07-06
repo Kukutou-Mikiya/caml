@@ -16,4 +16,3 @@ pip-selfcheck.json
 mimicdata/mimic2/*
 mimicdata/mimic3/*
 mimicdata/backup/*
-.model_in_Section_5.4/*
